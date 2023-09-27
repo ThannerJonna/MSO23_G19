@@ -32,6 +32,11 @@ class errorLog{
     +List<Log>
 }
 
+class Log{
+    +timestamp
+    +errorcode
+}
+
 
 
 class ticketmachine{
