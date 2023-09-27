@@ -21,6 +21,10 @@ TaxCalculator "1" -- "*" ticketmachine
 ICard <|.. Credit
 ICard <|.. Debit
 
+class MySQL_DB{
+    +returnPrice(string destination, string departure, int discount)
+}
+
 class sale{
     +amount
     +currency
@@ -38,8 +42,9 @@ class Log{
 }
 
 
-
 class ticketmachine{
+    +id : int
+    +string 
     +ticketStock
     +receiptStock
     +inkStock
@@ -59,7 +64,9 @@ class ticket{
     +amount
 }
 
+
 class Paymethod{
+    +identifier
     +cancelTransaction()
     +rollBack()
     +
