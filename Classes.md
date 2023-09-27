@@ -8,9 +8,11 @@ class Comments{
 
 ticket "*" -- "0-1" international fee
 ticketmachine "1" *-- "*" ticket
-Debit  "1" -- "1" ticketmachine 
-Credit "1" -- "1"  ticketmachine 
-NS-servers -- "*" ticketmachine 
+Debit  "1" --* "1" ticketmachine 
+Credit "1" --* "1"  ticketmachine 
+Logger <-- "*" ticketmachine
+MySQL_DB <-- ticketmachine
+Marketing_DB <-- ticketmachine
 ticketmachine "1" *-- "*" receipt
 ticket "*" -- "*" receipt
 ticketmachine "1" o-- "1" Coin machine
@@ -30,6 +32,12 @@ class ticket{
     +starting point
     +destination
     +class
+    +price
+    +amount
+}
+
+class Paymethod{
+    +CancelTransaction()
 }
 
 class Coinmachine{
