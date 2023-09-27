@@ -66,9 +66,8 @@ class Paymethod{
 }
 
 class Coinmachine{
-    +currentTotal
-    +
-
+    +dispenseChange(int)
+    +currentTotal()
 }
 
 class receipt{
