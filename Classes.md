@@ -44,42 +44,40 @@ class Log{
 
 class ticketmachine{
     +id : int
-    +string 
-    +ticketStock
-    +receiptStock
-    +inkStock
-    +makeLog()
-    +makeReceipt()
-    +makeTicket()
+    +ticketStock : int
+    +receiptStock : int
+    +inkStock : int 
+    +makeLog() : void
+    +makeReceipt() : void
+    +makeTicket() : void
     +currentSelection~ticket~
-    +Clear()
+    +nextCustomer()
 }
 
 
 class ticket{
-    +starting point
-    +destination
-    +class
-    +price
-    +amount
+    +starting point : string
+    +destination : string
+    +class : bool
+    +price : int
+    +amount : int
 }
 
 
 class Paymethod{
-    +identifier
+    +identifier : int
     +cancelTransaction()
     +rollBack()
-    +
 }
 
 class Coinmachine{
     +dispenseChange(int)
-    +currentTotal()
+    +currentTotal() : int
 }
 
 class receipt{
-    +Total
-    +tax
+    +transaction : sale
+    +returnTax() : int
 }
 
 
