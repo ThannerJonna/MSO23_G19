@@ -41,6 +41,9 @@ class Log{
 
 class ticketmachine{
     +ticketStock
+    +receiptStock
+    +inkStock
+    +makeLog()
     +makeReceipt()
     +makeTicket()
     +currentSelection<ticket>
