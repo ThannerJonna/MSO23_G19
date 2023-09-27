@@ -64,7 +64,6 @@ class ticketmachine{
     +nextCustomer() : void
     +fetchUpdate() : void
     +backUp() : void
-    +
 }
 
 
@@ -79,12 +78,12 @@ class ticket{
 
 class Paymethod{
     +identifier : int
-    +cancelTransaction()
-    +rollBack()
+    +cancelTransaction() : void
+    +rollBack() : void
 }
 
 class Coinmachine{
-    +dispenseChange(int)
+    +dispenseChange(int) : void
     +currentTotal() : int
 }
 
