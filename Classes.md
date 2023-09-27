@@ -37,10 +37,6 @@ class MySQL_DB{
     +returnPrice(string destination, string departure, int discount)
 }
 
-class Logger{
-
-}
-
 class sale{
     +amount
     +currency
