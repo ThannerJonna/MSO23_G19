@@ -10,7 +10,6 @@ class Comments{
 ticketmachine "1" *-- "*" ticket
 Debit  "1" --* "1" ticketmachine 
 Credit "1" --* "1"  ticketmachine 
-Logger <-- "*" ticketmachine
 MySQL_DB <-- ticketmachine
 Operations_DB <-- ticketmachine
 ticketmachine "1" *-- "*" receipt
@@ -20,11 +19,15 @@ ticketmachine "1" o-- "1" Coin machine
 ICard <|.. Credit
 ICard <|.. Debit
 
-saleLog..|> Log
-errorLog..|> Log
+saleLog "1" --o "1" ticketmachine
+errorLog "1" --o "1" ticketmachine
+saleLog ..|> Log
+errorLog ..|> Log
 
-sale--> saleLog
-error --> errorLog
+sale--o saleLog
+error --o "1" errorLog
+sale --> ticketmachine
+error --> ticketmachine
 
 class Operations_DB{
     +flushLog(Log)
@@ -73,6 +76,10 @@ class ticketmachine{
     +nextCustomer() : void
     +fetchUpdate() : void
     +backUp() : void
+    +cashTransaction()
+    +cardTransaction()
+    +printTickets(): void
+    +printReceipt(): void
 }
 
 
@@ -85,15 +92,10 @@ class ticket{
 }
 
 
-class Paymethod{
-    +identifier : int
-    +cancelTransaction() : void
-    +rollBack() : void
-}
-
 class Coinmachine{
     +dispenseChange(int) : void
     +currentTotal() : int
+    +cancel():void
 }
 
 class receipt{
@@ -101,6 +103,7 @@ class receipt{
     +returnTax() : int
 }
 
+receipt <-- sale
 
 class ICard {
     <<Interface>>
