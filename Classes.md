@@ -21,12 +21,27 @@ TaxCalculator "1" -- "*" ticketmachine
 ICard <|.. Credit
 ICard <|.. Debit
 
+class sale{
+    +amount
+    +currency
+    +timestamp
+    +List<Tickets>
+}
+
+class errorLog{
+    +List<Log>
+}
+
+
+
 class ticketmachine{
+    +ticketStock
     +makeReceipt()
     +makeTicket()
-    +TicketList
+    +currentSelection<ticket>
     +Clear()
 }
+
 
 class ticket{
     +starting point
@@ -37,11 +52,15 @@ class ticket{
 }
 
 class Paymethod{
-    +CancelTransaction()
+    +cancelTransaction()
+    +rollBack()
+    +
 }
 
 class Coinmachine{
-    +CurrentTotal
+    +currentTotal
+    +
+
 }
 
 class receipt{
