@@ -21,7 +21,7 @@ ICard <|.. Credit
 ICard <|.. Debit
 
 class Operations_DB{
-    +flushLog()
+    +flushLog(Log)
 }
 
 class MySQL_DB{
@@ -35,6 +35,9 @@ class sale{
     +List~Tickets~
 }
 
+class Log{
+    <<abstract>>
+}
 
 class saleLog{
     +List~sale~
@@ -42,11 +45,11 @@ class saleLog{
 }
 
 class errorLog{
-    +List~Log~
+    +List~error~
     +backUp() : void
 }
 
-class Log{
+class error{
     +timestamp : int
     +errorMessage : string
 }
