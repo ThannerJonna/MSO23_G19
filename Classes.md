@@ -25,11 +25,11 @@ class sale{
     +amount
     +currency
     +timestamp
-    +List<Tickets>
+    +List~Tickets~
 }
 
 class errorLog{
-    +List<Log>
+    +List~Log~
 }
 
 class Log{
@@ -46,7 +46,7 @@ class ticketmachine{
     +makeLog()
     +makeReceipt()
     +makeTicket()
-    +currentSelection<ticket>
+    +currentSelection~ticket~
     +Clear()
 }
 
