@@ -12,14 +12,17 @@ Debit  "1" --* "1" ticketmachine
 Credit "1" --* "1"  ticketmachine 
 Logger <-- "*" ticketmachine
 MySQL_DB <-- ticketmachine
-Marketing_DB <-- ticketmachine
+Operations_DB <-- ticketmachine
 ticketmachine "1" *-- "*" receipt
 ticket "*" -- "*" receipt
 ticketmachine "1" o-- "1" Coin machine
-TaxCalculator "1" -- "*" ticketmachine 
 
 ICard <|.. Credit
 ICard <|.. Debit
+
+class Operations_DB{
+    +flushLog()
+}
 
 class MySQL_DB{
     +returnPrice(string destination, string departure, int discount)
@@ -32,13 +35,20 @@ class sale{
     +List~Tickets~
 }
 
+
+class saleLog{
+    +List~sale~
+    +backUp () : void
+}
+
 class errorLog{
     +List~Log~
+    +backUp() : void
 }
 
 class Log{
-    +timestamp
-    +errorcode
+    +timestamp : int
+    +errorMessage : string
 }
 
 
@@ -51,7 +61,10 @@ class ticketmachine{
     +makeReceipt() : void
     +makeTicket() : void
     +currentSelection~ticket~
-    +nextCustomer()
+    +nextCustomer() : void
+    +fetchUpdate() : void
+    +backUp() : void
+    +
 }
 
 
