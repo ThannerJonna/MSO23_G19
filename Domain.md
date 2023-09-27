@@ -1,15 +1,35 @@
 ```mermaid
 classDiagram
-ticket "*" -- "0-1" international fee : added to price
+
+ticketmachine "1" -- "1" customer : serves
+ticket "*" -- "0-1" international fee : adds to price
 ticketmachine "1" -- "*" ticket : prints
-ticketmachine "1" -- "1" Debit_autherisation_sys
-ticketmachine "1" -- "1" Credit_autherisation_sys
+Bank  "1" -- "1" ticketmachine : authenticates debit cards
+Credit_co "1" -- "1"  ticketmachine : authenticates credit cards
+ticket "*" -- "0-1" date : valid on
+NS-servers -- "*" ticketmachine : calculates price for
+ticketmachine "1" -- "*" receipt : prints
+ticket "*" -- "*" receipt : is described on
+ticketmachine "1" -- "1" Coin machine : accepts cash in
+ticketmachine "1" -- "1" CardReader : scans credit/debit cards with
+customer "*"  -- "1" CardReader : scans credit/debit card on
+TaxCalculator "1" -- "*" ticketmachine : calculates tax for
 
 class ticketmachine
 
-class ticket
+class ticket{
+    +starting point
+    +destination
+    +class
+}
 
-class Debit_autherisation_sys
+class Coinmachine{
+    +CurrentTotal
+}
 
-class Credit_autherisation_sys
+class receipt{
+    +Total
+    +tax
+}
+
 ```
