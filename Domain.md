@@ -13,7 +13,6 @@ ticket "*" -- "*" receipt : is described on
 ticketmachine "1" -- "1" Coin machine : accepts cash in
 ticketmachine "1" -- "1" CardReader : scans credit/debit cards with
 customer "*"  -- "1" CardReader : scans credit/debit card on
-TaxCalculator "1" -- "*" ticketmachine : calculates tax for
 
 class ticketmachine
 
@@ -21,6 +20,7 @@ class ticket{
     +starting point
     +destination
     +class
+    +discount
 }
 
 class Coinmachine{
@@ -31,5 +31,9 @@ class receipt{
     +Total
     +tax
 }
+
+
+
+
 
 ```
