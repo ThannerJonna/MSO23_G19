@@ -6,7 +6,7 @@ class Comments{
     Composition is white
 }
 
-ticket "*" -- "0-1" international fee
+
 ticketmachine "1" *-- "*" ticket
 Debit  "1" --* "1" ticketmachine 
 Credit "1" --* "1"  ticketmachine 
@@ -19,6 +19,12 @@ ticketmachine "1" o-- "1" Coin machine
 
 ICard <|.. Credit
 ICard <|.. Debit
+
+saleLog..|> Log
+errorLog..|> Log
+
+sale--> saleLog
+error --> errorLog
 
 class Operations_DB{
     +flushLog(Log)
