@@ -1,20 +1,30 @@
 ```mermaid
 classDiagram
 
+class Comments{
+    Aggregation is black
+    Composition is white
+}
+
 ticket "*" -- "0-1" international fee
-ticketmachine "1" -- "*" ticket 
+ticketmachine "1" *-- "*" ticket
 Debit  "1" -- "1" ticketmachine 
 Credit "1" -- "1"  ticketmachine 
 NS-servers -- "*" ticketmachine 
-ticketmachine "1" -- "*" receipt
-ticket "*" -- "*" receipt 
-ticketmachine "1" -- "1" Coin machine
+ticketmachine "1" *-- "*" receipt
+ticket "*" -- "*" receipt
+ticketmachine "1" o-- "1" Coin machine
 TaxCalculator "1" -- "*" ticketmachine 
 
 ICard <|.. Credit
 ICard <|.. Debit
 
-class ticketmachine
+class ticketmachine{
+    +makeReceipt()
+    +makeTicket()
+    +TicketList
+    +Clear()
+}
 
 class ticket{
     +starting point
