@@ -69,10 +69,10 @@ class ticketmachine{
     +ticketStock : int
     +receiptStock : int
     +inkStock : int 
+    +currentSelection~ticket~
     +makeLog() : void
     +makeReceipt() : void
     +makeTicket() : void
-    +currentSelection~ticket~
     +nextCustomer() : void
     +fetchUpdate() : void
     +backUp() : void
